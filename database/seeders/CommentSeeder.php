@@ -12,6 +12,9 @@ class CommentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Comment::factory()->create([
+            'text'=>'This is some text',
+            'date'=>'2/3/22'     
+        ]);
     }
 }

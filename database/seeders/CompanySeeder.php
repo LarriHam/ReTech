@@ -12,6 +12,10 @@ class CompanySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Company::factory()->create([
+            'name'=>'Lenovo',
+            'phone_no'=>'123456789'
+            'company_info'=>'This is some company info'
+        ]);   
     }
 }
