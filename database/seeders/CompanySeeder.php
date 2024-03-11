@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Company;
 
 class CompanySeeder extends Seeder
 {
@@ -14,8 +15,8 @@ class CompanySeeder extends Seeder
     {
         Company::factory()->create([
             'name'=>'Lenovo',
-            'phone_no'=>'123456789'
-            'company_info'=>'This is some company info'
+            'phone_no'=>'123456789',
+            'company_info'=>'This is some company info',
         ]);   
     }
 }

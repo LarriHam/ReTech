@@ -4,19 +4,20 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Comment;
+use App\Models\User;
 
-class CommentSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Comment::create([
-            'text'=>'This is some text',
-            'date'=>'2/3/22',
-            'user_id' => '1'    
+        User::create([
+            'name' => 'Larry',
+            'email' => 'admin@gmail.com',
+            'password' => 'secret',
+            'role' => 'admin',
         ]);
     }
 }

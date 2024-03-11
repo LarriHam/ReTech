@@ -17,7 +17,9 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'text' => $this->faker->word,
+            'date' =>   $this->faker->word,
+            'user_id' => $this->faker->word,
         ];
     }
 }
