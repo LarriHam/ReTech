@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'summary'=> $this->faker->word,
             'review'=> $this->faker->word,
             'rating'=> $this->faker->word,
+            'price'=> $this->faker->word,
             'img'=> $this->faker->word,
             'company_id'=> $this->faker->word
         ];

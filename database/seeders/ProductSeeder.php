@@ -14,12 +14,13 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::factory()->create([
-            'name'=>'Nokia flip',
-            'summary'=>'Kinda trash',
-            'review'=>'Wouldnt reccomend',
-            'rating'=>'5',
-            'img'=>'mew.png',
-            'company_id'=>'1',
+            "name"=>"Fairphone 5",
+            "summary"=>"Sustainable phone-maker Fairphone wants its new Fairphone 5 to save the planet.",
+            "review"=>"Sustainable phone-maker Fairphone wants its new Fairphone 5 to save the planet.",
+            "rating"=>"5",
+            "price"=>"600.00",
+            "img"=>"fairphone.png",
+            "company_id"=>"1",
 
         ]);
     }

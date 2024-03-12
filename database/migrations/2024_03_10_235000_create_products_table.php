@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id'); 
             $table->string('name');
-            $table->string('summary');
-            $table->string('review');
+            $table->text('summary');
+            $table->text('review');
             $table->integer('rating');
+            $table->string('price');
             $table->string('img');
             $table->timestamps();
             
