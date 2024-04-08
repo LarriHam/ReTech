@@ -23,6 +23,7 @@ class ProductFactory extends Factory
             'rating'=> $this->faker->word,
             'price'=> $this->faker->word,
             'img'=> $this->faker->word,
+            'category'=> $this->faker->word,
             'company_id'=> $this->faker->word
         ];
     }

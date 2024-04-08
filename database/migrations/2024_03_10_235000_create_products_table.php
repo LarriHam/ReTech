@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('rating');
             $table->string('price');
             $table->string('img');
+            $table->enum('category',['phone', 'laptop', 'audio_device', 'games_console', 'tablet', 'tv', 'smartwatch', 'camera']);
             $table->timestamps();
             
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
