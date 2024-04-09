@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use App\Models\Company;
+use App\Models\Comment;
 
 class ProductController extends Controller
 {
@@ -13,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        return view('admin.products.index', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -35,9 +41,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(string $id)
     {
-        //
+        $products = Product::all();
+
+        return view('admin.products.show', [
+            'products' => $products
+        ]);
+
     }
 
     /**
