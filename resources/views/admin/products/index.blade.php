@@ -63,12 +63,14 @@
                 <td class="px-6 py-4">
                     {{$product->img}}
                 </td>
-                
                 <td class="px-6 py-4">
-                    {{$product->studio->name}}
+                    {{$product->category}}
+                </td>              
+                <td class="px-6 py-4">
+                    {{$product->company->name}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="{{route('admin.movies.show', $movie->id)}}">Read More</a></a>
+                    <a href="{{route('admin.products.show', $product->id)}}">Read More</a></a>
                 </td>
             </tr>
 
