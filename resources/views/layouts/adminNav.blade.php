@@ -51,6 +51,10 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        {{-- <x-dropdown-link :href="route('homepage.blade.php')">
+                            {{ __('Homepage') }}
+                        </x-dropdown-link> --}}
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
