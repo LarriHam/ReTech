@@ -75,7 +75,7 @@
             </tr>
 
             @empty
-            <h4>No Movies found</h4>
+            <h4>No products found</h4>
         @endforelse
             
         </tbody>

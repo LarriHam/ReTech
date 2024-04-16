@@ -20,13 +20,13 @@
                         {{ __('Product') }}
                     </x-nav-link>
 
-                    {{-- <x-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies')">
+                    <x-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies')">
                         {{ __('Company') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('admin.comments')">
                         {{ __('Comment') }}
-                    </x-nav-link> --}}
+                    </x-nav-link>
 
                 </div>
             </div>
