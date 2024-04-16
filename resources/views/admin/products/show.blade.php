@@ -6,7 +6,7 @@
         <h2 class="text-2xl font-extrabold dark:text-white">Show Product</h2>
     </div>
 
-    <img width="150" src={{ asset("storage/images/" . $products->images) }} />
+    {{-- <img width="150" src={{ asset("storage/images/" . $products->img) }} /> --}}
 
     <div class="mb-6">
         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
