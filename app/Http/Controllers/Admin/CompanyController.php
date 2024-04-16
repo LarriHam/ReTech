@@ -25,7 +25,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.companies.create");
     }
 
     /**
@@ -33,7 +33,25 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $rules = [
+                'name' => 'required|string|min:10|max:1000',
+                'phone_no' => 'required|string|min:2|max:1000',
+                'company_info' => 'required|string|min:2|max:10000000',
+            ];
+    
+            $company = new Company;
+            $company->name = $request->name;
+            $company->phone_no = $request->phone_no;
+            $company->company_info = $request->company_info;
+        
+            $company->save();
+    
+            return redirect()
+                ->route('admin.companies.index')
+                ->with('status', 'Created a new company!');
+        
+        }
     }
 
     /**
@@ -52,7 +70,10 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return view('admin.companies.edit', [
+            'company' => $company
+        ]);
     }
 
     /**
@@ -60,7 +81,24 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //validation rules
+        $rules = [
+
+            'name' => 'required|string|min:10|max:1000',
+            'phone_no' => 'required|string|min:2|max:1000',
+            'company_info' => 'required|string|min:2|max:10000000',
+
+        ];
+
+        $company = Company::findOrFail($id);
+
+        $company->name = $request->name;
+        $company->phone_no = $request->phone_no;
+        $company->company_info = $request->company_info;     
+
+        $company->save();
+
+        return redirect()->route('admin.companies.index')->with('status', 'Updated company!');
     }
 
     /**
@@ -68,6 +106,10 @@ class CompanyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        $company->delete();
+
+        return redirect()->route('admin.companies.index')->with('status', 'Selected Company Deleted Successfully');
     }
 }
