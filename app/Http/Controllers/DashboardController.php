@@ -13,10 +13,15 @@ class DashboardController extends Controller
 
         if($user->hasRole('admin')){
             return view('admin.dashboard');
+            
+        }
+        if($user->hasRole('ordinary_user')){
+            return view('ordinary_user.dashboard');
         }
         else {
             return view('dashboard');
         }
+
     }
 }
 

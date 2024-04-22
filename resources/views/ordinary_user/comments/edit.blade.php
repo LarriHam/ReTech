@@ -1,11 +1,11 @@
-@extends('layouts.admin')
+@extends('layouts.ordinary_user')
 
 @section('content')
 
 <div class="px-4 py-4">
     <h3 class="text-2xl font-extrabold dark:text-white">Edit Comment</h3>
 
-    <form action="{{route('admin.comments.update', $comment->id)}}" method="post">
+    <form action="{{route('ordinary_user.comments.update', $comment->id)}}" method="post">
         @csrf
         @method('PUT')
         <div>

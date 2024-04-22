@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Company;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -27,7 +28,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("admin.products.create");
+        $category = [
+            'phone', 'laptop', 'audio_device', 'games_console', 'tablet', 'tv', 'smartwatch', 'camera'
+        ];
+        return view('admin.products.create', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -42,7 +48,7 @@ class ProductController extends Controller
                 'review' => 'required|string|min:2|max:1000',
                 'rating' => 'required|string|min:2|max:1000',
                 'price' => 'required|string|min:2|max:1000',
-                'img' => 'required|string|min:2|max:1000',
+                'img' => 'file|image',
                 'category' => 'required|string|min:2|max:1000',
                 'company_id' => 'required|exists:company,id',
             ];
@@ -53,15 +59,27 @@ class ProductController extends Controller
             $product->review = $request->review;
             $product->rating = $request->rating;
             $product->price = $request->price;
-            $product->img = $request->img;
+            // $product->img = $request->img;
             $product->category = $request->category;
             $product->company_id = $request->company_id;
         
-            $product->save();
-    
+            //this stores the image
+            if ($request->hasFile('img')) {               
+                $img = $request->file('img');               
+                $extension = $img->getClientOriginalExtension();
+                $filename = date('Y-m-d-His') . '_' . $request->name . '.' . $extension;  
+                $img->storeAs('public/images', $filename); 
+                $product->img = $filename;
+            }
+
+            $product->save(); 
+
             return redirect()
                 ->route('admin.products.index')
                 ->with('status', 'Created a new product!');
+
+
+            
         
         }
     }
@@ -74,6 +92,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         return view('admin.products.show')->with('product', $product);
+        
 
     }
 
@@ -82,10 +101,18 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        $category = [
+            'phone', 'laptop', 'audio device', 'games console', 'tablet', 'tv', 'smartwatch', 'camera'
+        ];
+
         $product = Product::findOrFail($id);
         return view('admin.products.edit', [
-            'product' => $product
+            'product' => $product,
+            'category' => $category
         ]);
+
+        
+    
     }
 
     /**
@@ -101,7 +128,7 @@ class ProductController extends Controller
             'review' => 'required|string|min:2|max:1000',
             'rating' => 'required|string|min:2|max:1000',
             'price' => 'required|string|min:2|max:1000',
-            'img' => 'required|string|min:2|max:1000',
+            'img' => 'file|image',
             'category' => 'required|string|min:2|max:1000',
             'company_id' => 'required|exists:company,id',
 
@@ -114,9 +141,33 @@ class ProductController extends Controller
         $product->review = $request->review;
         $product->rating = $request->rating;
         $product->price = $request->price;
-        $product->img = $request->img;
+        // $product->img = $request->img;
         $product->category = $request->category;
         $product->company_id = $request->company_id;       
+
+        if ($request->hasFile('img')) {               
+            $img = $request->file('img');               
+            $extension = $img->getClientOriginalExtension();
+            $filename = date('Y-m-d-His') . '_' . $request->name . '.' . $extension;  
+            $img->storeAs('public/images', $filename);             
+
+            if ($product->img) { // Delete old image
+                Storage::delete('public/images/' . $product->img);
+            }
+
+            $product->img = $filename;
+        }
+
+        if ($request->hasFile('image')) { // Update the image!
+            // Upload new image
+            $newImage = $request->file('image');
+            $filename = date('Y-m-d-His') . '_' . $request->name . '.' . $newImage->getClientOriginalExtension();
+            $newImage->storeAs('public/images/', $filename);
+          
+            
+
+            $storysection->image = $filename;
+        }
 
         $product->save();
 

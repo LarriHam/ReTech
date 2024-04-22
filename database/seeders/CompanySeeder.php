@@ -36,5 +36,17 @@ class CompanySeeder extends Seeder
             'phone_no'=>'07836629745',
             "company_info"=>"Samsung Group is a South Korean multinational manufacturing conglomerate headquartered in Samsung Digital City, Suwon, South Korea. It comprises numerous affiliated businesses, most of them united under the Samsung brand, and is the largest South Korean chaebol (business conglomerate). As of 2020, Samsung has the eighth-highest global brand value. The New Environmental Strategy specifies the company’s roadmap to achieve net zero at the Device eXperience (DX) Division by 2030 and at the company level including the Device Solutions (DS) Division by 2050, as well as its efforts to contribute to climate action and a circular economy. In 2022, Samsung completed its transition to renewable energy use in Vietnam, India and Brazil — in line with the company’s goal to fully transition to renewable energy use at DX and all operational sites outside Korea by 2027. In addition, the company increased the amount of recycled resin used in its plastic parts — on track towards its goal to use recycled resin in 50% of plastic parts by 2030 and in all plastic components by 2050. In 2022, Samsung’s DS Division expanded installations of Regenerative Catalytic Systems (RCSs) in its facilities to treat process gas more efficiently and reduce direct greenhouse gas (GHG) emissions."
         ]);
+
+        Company::factory()->create([
+            'name'=>'Nokia',
+            'phone_no'=>'02838669745',
+            "company_info"=>"In 2023 Nokia looked to investigate how to accelerate its net zero commitment  and needed related actions. Nokia is now set to accelerate both its net zero target for Scopes 1, 2 and 3 and its interim 2030 Scope 1 and 2 targets. Nokia commits to net-zero greenhouse gas (GHG) emissions across the value chain (Scopes 1, 2 and 3) by 2040. his puts Nokia ahead of the Paris Agreement goal to reach net zero by 2050. Nokia also aims to accelerate its existing interim 2030 target to reduce emissions across its own operations (Scopes 1 and 2), reaching an 83% reduction by 2030. This includes complete decarbonization of Nokia’s car fleet and its facilities. Marine fleet reductions aligned with International Maritime Industry (IMO) decarbonization pathway. To ensure its targets are aligned with climate science, Nokia has submitted its letter of commitment to the Science Based Targets initiative. "
+        ]);
+
+        Company::factory()->create([
+            'name'=>'Terracube',
+            'phone_no'=>'020976697678',
+            "company_info"=>"Most smartphones last an average of 2 years or less. Teracube is engineered to last longer and is backed by the industry's first 4-year warranty to ensure you can enjoy your device with peace of mind. The longer you keep Teracube, the more sustainable it becomes. Smartphones' biggest environmental impact comes from the manufacturing process and the e-waste when discarded. Over 135 million smartphones are thrown away every year in the US alone. Teracube is good for our planet and it's great on your wallet as well! At Teracube, their core mission is to create great products that you can enjoy for years to come and to help save the environment. Teracube want to keep pushing the envelope in this direction by building more environmentally-friendly products with modular designs and eco-friendly components. Not only are you buying great technology, but you’re also replenishing our rainforests around the world."
+        ]);
     }
 }

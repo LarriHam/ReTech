@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.ordinary_user')
 
 @section('content')
 <div class="px-4 py-4">
     <h3 class="text-2xl font-extrabold dark:text-white">Create Comments</h3>
 
-    <form action="{{route('admin.comments.store')}}" method="post">
+    <form action="{{route('ordinary_user.comments.store')}}" method="post">
         @csrf
         <div>
             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text</label>

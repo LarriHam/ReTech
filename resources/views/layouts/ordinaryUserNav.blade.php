@@ -18,15 +18,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products')">
+                    {{-- <x-nav-link :href="route('ordinary_user.products.index')" :active="request()->routeIs('ordinary_user.products')">
                         {{ __('Product') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin.companies.index')" :active="request()->routeIs('admin.companies')">
+                    <x-nav-link :href="route('ordinary_user.companies.index')" :active="request()->routeIs('ordinary_user.companies')">
                         {{ __('Company') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
-                    <x-nav-link :href="route('admin.comments.index')" :active="request()->routeIs('admin.comments')">
+                    <x-nav-link :href="route('ordinary_user.comments.index')" :active="request()->routeIs('ordinary_user.comments.index')">
                         {{ __('Comment') }}
                     </x-nav-link>
 
@@ -98,10 +98,6 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-
-                {{-- <x-responsive-nav-link :href="{{ url('/') }}">
-                    {{ __('Homepage') }}
-                </x-responsive-nav-link> --}}
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

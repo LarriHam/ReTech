@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.ordinary_user')
 
 @section('header')
 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -64,7 +64,7 @@
                     {{$product->company->name}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="{{route('admin.products.show', $product->id)}}">Read More</a></a>
+                    <a href="{{route('ordinary_user.products.show', $product->id)}}">Read More</a></a>
                 </td>
             </tr>
 
@@ -74,7 +74,7 @@
             
         </tbody>
     </table>
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a href="{{route('admin.products.create')}}">Create</a></button>
+    
 </div>
 
 @endsection

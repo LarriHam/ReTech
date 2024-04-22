@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Ordinary_user;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Comment;
-use Auth;
 
 
 class CommentController extends Controller
@@ -16,14 +15,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->hasRole('admin'))
-        {
-            return to_route('ordinary_user.comments.index');
-        }
-
         $comments = Comment::all();
 
-        return view('admin.comments.index', [
+        return view('ordinary_user.comments.index', [
             'comments' => $comments
         ]);
     }
@@ -34,7 +28,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view("admin.comments.create");
+        return view("ordinary_user.comments.create");
     }
 
     /**
@@ -56,7 +50,7 @@ class CommentController extends Controller
         $comment->save();
 
         return redirect()
-            ->route('admin.comments.index')
+            ->route('tierPage')
             ->with('status', 'Created a new comment!');
     
     }
@@ -68,7 +62,7 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
 
-        return view('admin.comments.show')->with('comment', $comment);
+        return view('ordinary_user.comments.show')->with('comment', $comment);
     }
 
     /**
@@ -77,7 +71,7 @@ class CommentController extends Controller
     public function edit(string $id)
     {
         $comment = Comment::findOrFail($id);
-        return view('admin.comments.edit', [
+        return view('ordinary_user.comments.edit', [
             'comment' => $comment
         ]);
     }
@@ -104,7 +98,7 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->route('admin.comments.index')->with('status', 'Updated comment!');
+        return redirect()->route('ordinary_user.comments.index')->with('status', 'Updated comment!');
     
     }
 
@@ -117,6 +111,6 @@ class CommentController extends Controller
 
         $comment->delete();
 
-        return redirect()->route('admin.comments.index')->with('status', 'Selected Comment Deleted Successfully');
+        return redirect()->route('ordinary_user.comments.index')->with('status', 'Selected Comment Deleted Successfully');
     }
 }

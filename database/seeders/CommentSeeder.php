@@ -14,9 +14,15 @@ class CommentSeeder extends Seeder
     public function run(): void
     {
         Comment::create([
-            'text'=>'This is some text',
+            'text'=>"Samsung is not the best by they're trying their hardest to achieve the most sustainable product.",
             'date'=>'2/3/22',
             'user_id' => '1'    
+        ]);
+
+        Comment::create([
+            'text'=>"I should really get the Fairphone!",
+            'date'=>'2/3/22',
+            'user_id' => '3'    
         ]);
     }
 }

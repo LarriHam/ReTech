@@ -19,5 +19,19 @@ class UserSeeder extends Seeder
             'password' => 'secret',
             'role' => 'admin',
         ]);
+
+        User::create([
+            'name' => 'Mary',
+            'email' => 'review@gmail.com',
+            'password' => 'secret',
+            'role' => 'reviewer',
+        ]);
+
+        User::create([
+            'name' => 'Dan',
+            'email' => 'ordinaryuser@gmail.com',
+            'password' => 'secret',
+            'role' => 'ordinary_user',
+        ]);
     }
 }

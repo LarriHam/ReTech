@@ -17,9 +17,17 @@
         </style>
     </head>
     <body class="antialiased">
+        
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+                <div class="sm:fixed sm:top-0 sm:left-0 p-6 text-left z-10">   
+                    <h1 class="text-white text-2xl font-bold">
+                        <a href="{{ url('/') }}">ReTech</a>
+                    </h1>
+                </div> 
             @if (Route::has('login'))
+
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    
                     @auth
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
@@ -32,76 +40,70 @@
                 </div>
             @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <h1 class="text-white text-4xl font-bold">ReTech</h1>
+        <main class="container mx-auto mt-8">
+            <div class="flex flex-wrap justify-center">
+
+                <div class="w-full md:w-8/12 px-4 mb-8">
+                    {{-- title of tier list --}}
+                    <h2 class=" my-5 mt-6 text-5xl font-semibold text-gray-900 dark:text-white">Top 5 Sustainable Phones</h2>
+                    
+                    @forelse ($products as $index=>$product )
+                    
+                    {{-- numbered divider --}}
+                    <span class="flex items-center text-white text-5xl">
+                        <span class="pr-6">{{$index +1}}</span>
+                        <span class="h-px flex-1 bg-white"></span>
+                    </span>
+                    
+                    <h2 class=" my-5 mt-6 text-4xl font-semibold text-gray-900 dark:text-white">{{$product->name}}</h2>
+                    <img src="{{ asset('storage/images/' . $product->img) }}" alt="Featured Image" class="w-full h-64 object-cover rounded-lg">
+                    <h2 class=" my-5 mt-6 text-2xl font-semibold text-gray-900 dark:text-white ">Review</h2>
+                    <p class=" my-5 mt-6 text-1xl text-gray-900 dark:text-white leading-loose">{{$product->review}}</p>
+                    
+                    
+
+                    <h2 class=" my-5 mt-6 text-2xl font-semibold text-gray-900 dark:text-white ">Company Sustainability</h2>
+                     
+                    <p class=" my-5 mt-6 text-1xl text-gray-900 dark:text-white leading-loose">{{$product->company->company_info}}</p>
+                    @empty
+                    @endforelse
                 </div>
-                {{-- large section --}}
-                <div class="mt-16">                   
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 lg:gap-8">
-                        <a href="{{route("tierPage")}}" class="scale-100 p-6 bg-[url('/storage/app/public/images/stock3.jpg')] bg-no-repeat bg-cover from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div class="bg-slate-800 rounded-lg">
-                                
-                                <h2 class="mx-5 my-5 mt-6 text-xl font-semibold text-gray-900 dark:text-white">Top 5 Sustainable Phones</h2>
 
-                                <p class="mx-5 my-5 mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Check out these phone options 
-                                </p>
-                            </div>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="rounded-lg bg-slate-800 self-center shrink-0 stroke-white w-10 h-10 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-                    </div>                    
-                </div> 
                 
-                {{-- smaller section --}}
-                <div class="mt-16">                   
-                    <div class="grid grid-cols-2 md:grid-cols-2 gap-6 lg:gap-8">
-                        {{-- section 1 --}}
-                        <a href="#" class="scale-100 p-6 bg-[url('/storage/app/public/images/stock4.jpg')] bg-no-repeat bg-cover from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div class="bg-slate-800 rounded-lg">
-                                <h2 class="mx-5 my-5 mt-6 text-xl font-semibold text-gray-900 dark:text-white">Top 5 Sustainable Laptops</h2>
 
-                                <p class="mx-5 my-5 mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Check out these laptop options
-                                </p>
-                            </div>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="rounded-lg bg-slate-800 self-center shrink-0 stroke-white w-10 h-10 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
+        
+            
+                <div class="w-full md:w-8/12 px-4 mb-8"> 
+                    
+                    <span class="flex items-center text-white text-5xl">                       
+                        <span class="h-px flex-1 bg-white"></span>
+                    </span>
 
-                        {{-- section 2 --}}
-                        <a href="#" class="scale-100 p-6 bg-[url('/storage/app/public/images/stock5.jpg')] bg-no-repeat bg-cover from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div class="bg-slate-800 rounded-lg">
-                                <h2 class="mx-5 my-5 mt-6 text-xl font-semibold text-gray-900 dark:text-white">Top 5 Sustainable Tech</h2>
-
-                                <p class="mx-5 my-5 mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Check out the latest sustainable tech
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="rounded-lg bg-slate-800 self-center shrink-0 stroke-white w-10 h-10 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-                          
+                    <h2 class=" my-5 mt-6 text-3xl font-semibold text-gray-900 dark:text-white">Comments</h2>
+                    @forelse ($comments as $comment)
+                    <div class="rounded-lg my-16 bg-slate-800">
+                        <h2 class=" mx-5 pt-5 text-2xl font-semibold text-gray-900 dark:text-white">{{$comment->user->name}}</h2>
+                        <p class=" mx-5 pb-5 text-1xl text-gray-900 dark:text-white leading-loose">{{$comment->text}}</p>
                     </div>
-                </div>
+                    @empty
+                    @endforelse     
+                    
+                    <a
+                    class="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+                    href="{{route('ordinary_user.comments.create')}}"
+                    >
+                    Create comment
+                    </a>
+                </div>    
 
             </div>
-
-            
-        </div>
-
-        
-        
+        </main>
+    
     </body>
 
-
+    
     
 
 </html>
